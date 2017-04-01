@@ -1,4 +1,4 @@
-CREATE TABLE tb_cal (
+﻿CREATE TABLE tb_cal (
    id  int NOT NULL,
    op1  int NOT NULL,
    op  varchar(5) NOT NULL,

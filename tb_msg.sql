@@ -1,4 +1,4 @@
-CREATE TABLE tb_msg (
+﻿CREATE TABLE tb_msg (
    id  int NOT NULL,
    cod  int NOT NULL,
    message  varchar(20) NOT NULL
