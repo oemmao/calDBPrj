@@ -7,7 +7,7 @@ public class TestCal {
 			cv.doService();
 	}
 }
-
+//TestCal - test하는거임
 /*
 String[] msg = { "0을 더하기",
 			     "0을 빼기", 
