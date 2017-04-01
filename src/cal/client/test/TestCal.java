@@ -7,12 +7,12 @@ public class TestCal {
 			cv.doService();
 	}
 }
-//TestCal - testí•˜ëŠ”ê±°ì„
+//TestCal - testÇÏ´Â°ÅÀÓA
 /*
-String[] msg = { "0ì„ ë”í•˜ê¸°",
-			     "0ì„ ë¹¼ê¸°", 
-			     "1ì„ ê³±í•˜ê¸°",
-			     "1ë¡œ ë‚˜ëˆ„ê¸°",
+String[] msg = { "0À» ´õÇÏ±â",
+			     "0À» »©±â", 
+			     "1À» °öÇÏ±â",
+			     "1·Î ³ª´©±â",
 			   };
 
 		if(args.length !=3) {
