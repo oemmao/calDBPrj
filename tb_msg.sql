@@ -1,4 +1,4 @@
-﻿CREATE TABLE tb_msg (
+CREATE TABLE tb_msg (
    id  int NOT NULL,
    cod  int NOT NULL,
    message  varchar(20) NOT NULL
@@ -12,6 +12,9 @@ Create Sequence msg_log
 start with 1
 increment by 1
 maxvalue 10000000;
+
+insert into tb_msg(id, code, message)
+values(msg_log.nextval, 181, AddZeroException)
 
 
 

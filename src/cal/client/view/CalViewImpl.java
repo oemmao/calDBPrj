@@ -33,12 +33,12 @@ public class CalViewImpl implements ICalView {
 				
 				Object obj = ois.readObject();
 				List list = (List) obj;
-				if (list.size() > 1) {
+				if (list.get(2) instanceof ArrayList) {
 					List<String[]> resultList = (List<String[]>) list.get(2);
 					report(resultList);
 				} else {
-					String msg = (String) list.get(0);
-					System.out.println(msg);
+					String msg = (String) list.get(2);
+					errReport(msg);
 				}
 			} finally {
 				if(s != null && ois != null && oos != null) {
