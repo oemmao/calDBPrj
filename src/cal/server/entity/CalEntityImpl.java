@@ -17,12 +17,12 @@ public class CalEntityImpl implements ICalEntity {
 	private List<String[]> resultList;
 	
 	public CalEntityImpl() {
-		exceptionMsg = new Properties(); //예외메시지 파일 불러오기~
+//		exceptionMsg = new Properties(); //예외메시지 파일 불러오기~
 		try {
-			exceptionMsg.load(new FileInputStream("src\\cal\\server\\file\\exceptionmsg.txt"));	
+//			exceptionMsg.load(new FileInputStream("src\\cal\\server\\file\\exceptionmsg.txt"));	
 			Class.forName("oracle.jdbc.driver.OracleDriver"); //JDBC 1. 드라이버 로딩
-		} catch (IOException e) {
-			System.out.println("예외메시지 파일을 찾을 수 없습니다.");
+//		} catch (IOException e) {
+//			System.out.println("예외메시지 파일을 찾을 수 없습니다.");
 		} catch (ClassNotFoundException e ) {
 			e.printStackTrace();
 		}
@@ -83,14 +83,14 @@ public class CalEntityImpl implements ICalEntity {
 	return resultList;
 	}
 
-	public void tableData() {
+	public void tableData() { //table에 있는 data를 배열에 저장 후 리스트에 추가
 		try {
 			stmt1 = con.createStatement();
 			String query1 = "select * from (select * from tb_cal order by id desc) where rownum <2"; //result값을 가져오기
 			
 			rs = stmt1.executeQuery(query1);
 			rs.next();
-			String id = rs.getString("id").trim();
+			String id = rs.getString("id").trim(); 
 			String op1 = rs.getString("op1").trim();
 			String op = rs.getString("op").trim();
 			String op2 = rs.getString("op2").trim();
@@ -104,24 +104,44 @@ public class CalEntityImpl implements ICalEntity {
 			ops[4] = result;
 			
 			resultList.add(ops);
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
+
+	public String calExcMsg(int excCode) {
+		String excMsg = null;
+		
+		try {
+			con = DriverManager.getConnection(url,user,pass);
+			Statement stmt2 = con.createStatement();
+			String query = "select * from tb_msg where code=" + excCode;
+			ResultSet rs1 = stmt2.executeQuery(query);
+			rs1.next();
+			String code = rs1.getString("code").trim();
+			String message = rs1.getString("message").trim();
+		
+			excMsg = code +" "+ message;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return excMsg;
+	}
 	
 	public String getMsgAddZeroExc() {	
-		return exceptionMsg.getProperty("e1");
+		return calExcMsg(181);
 	}
 	
 	public String getMsgSubZeroExc() {
-		return exceptionMsg.getProperty("e2");
+		return calExcMsg(182);
 	}
 	
 	public String getMsgMulOneExc() {
-		return exceptionMsg.getProperty("e3");
+		return calExcMsg(183);
 	}
 	
 	public String getMsgDivOneExc() {
-		return exceptionMsg.getProperty("e4");
+		return calExcMsg(184);
 	}
 }
