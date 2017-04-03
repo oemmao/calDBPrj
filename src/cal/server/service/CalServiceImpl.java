@@ -19,7 +19,7 @@ public class CalServiceImpl implements ICalService {
 		ce = new CalEntity();
 	}
 
-	public List<String[]> doService(List list) throws AddZeroException, SubZeroException, MulOneException, DivOneException {
+	public List<String[]> doService(List list) throws Exception {
 
 		cals = (CalVO[]) list.get(0);
 		emvo = (CalExcMsgVO) list.get(1);
@@ -37,7 +37,7 @@ public class CalServiceImpl implements ICalService {
 					result = Integer.parseInt(op1) + Integer.parseInt(op2);
 				}
 			}
-
+			
 			else if (op.equals(CalVO.SUB)) {
 				if (Integer.parseInt(op2) == 0) {
 					emvo.setMsgSubZeroExc(getMsgSubZeroExc());

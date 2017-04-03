@@ -11,7 +11,7 @@ public class CalService {
 		ics = new CalServiceImpl();
 	}
 	
-	public List<String[]> doService(List list) throws AddZeroException, SubZeroException, MulOneException, DivOneException {
+	public List<String[]> doService(List list) throws Exception {
 		return ics.doService(list);
 	}
 }
