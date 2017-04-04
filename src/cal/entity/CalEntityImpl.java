@@ -14,7 +14,7 @@ public class CalEntityImpl implements ICalEntity {
 	private String pass = "tiger"; //약속된 규약
 	private Connection con;
 	private PreparedStatement stmt;
-	private ResultSet rs;;
+	private ResultSet rs;
 	private List<String[]> resultList;
 	
 	public CalEntityImpl() {
@@ -37,6 +37,7 @@ public class CalEntityImpl implements ICalEntity {
 				stmt.setString(2, cals[i].getOp());
 				stmt.setInt(3, Integer.parseInt(cals[i].getOp2()));
 				stmt.setInt(4, cals[i].getResult());
+				stmt.executeUpdate();
 				tableData();
 			}
 		} catch (SQLException e) {
@@ -68,6 +69,7 @@ public class CalEntityImpl implements ICalEntity {
 	}
 
 	public void tableData() { //table에 있는 data를 배열에 저장 후 리스트에 추가
+		
 		try {
 			String query1 = "select * from (select * from tb_cal order by id desc ) where rownum < 2";
 			stmt = con.prepareStatement(query1);

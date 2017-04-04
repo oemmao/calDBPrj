@@ -15,27 +15,27 @@ public class CalViewImpl implements ICalView {
 		cc = new CalController(cv);
 	}
 	
-	public void doService() {
-		prop = new Properties();		
-		try {
-			prop.load(new FileInputStream("src\\cal\\file\\input.txt"));
-		} catch (IOException e) {
-			System.out.println("지정된 파일을 찾을 수 없습니다.");
-		}
-		cc.doService(prop);
+	public void doService() {	
+		prop = new Properties();
+			try {
+				prop.load(new FileInputStream("src\\cal\\file\\input.txt"));
+			} catch (IOException e) {
+				System.out.println("지정된 파일을 찾을 수 없습니다.");
+			}
+			cc.doService(prop);
 	}
 	
-	@Override
-	public void report(List<String[]> resultList) {
-		System.out.println(resultList.size());
-		for(String[] result : resultList) {
-			System.out.println(Arrays.toString(result));
-		}
+	public void report(List<String[]> resultList) {	
+
+//		for(String[] result : resultList) {
+//			System.out.println(result);
+//		}
 	}
 	
 	public void errReport(String msg) {
 		System.out.println(msg);
 	}
+
 }
 
 /*
