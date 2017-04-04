@@ -16,6 +16,7 @@ public class CalEntityImpl implements ICalEntity {
 	private PreparedStatement stmt;
 	private ResultSet rs;
 	private List<String[]> resultList;
+	private CalVO[] cals;
 	
 	public CalEntityImpl() {
 		try {
@@ -25,7 +26,8 @@ public class CalEntityImpl implements ICalEntity {
 		}
 	}
 	
-	public List<String[]> doService(CalVO[] cals) {	
+	public void doService(List list) {
+		cals = (CalVO[]) list.get(0);
 		resultList = new ArrayList<String[]>();
 		try {
 			con = DriverManager.getConnection(url,user,pass); //JDBC 2.커넥션 획득 //공유가능
@@ -38,8 +40,9 @@ public class CalEntityImpl implements ICalEntity {
 				stmt.setInt(3, Integer.parseInt(cals[i].getOp2()));
 				stmt.setInt(4, cals[i].getResult());
 				stmt.executeUpdate();
-				tableData();
+				tableData();	
 			}
+			list.add(resultList);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -65,7 +68,6 @@ public class CalEntityImpl implements ICalEntity {
 				}
 			}
 		}
-		return resultList;
 	}
 
 	public void tableData() { //table에 있는 data를 배열에 저장 후 리스트에 추가
@@ -89,7 +91,7 @@ public class CalEntityImpl implements ICalEntity {
 			ops[4] = result;
 			
 			resultList.add(ops);
-			
+		
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -17,3 +17,7 @@ maxvalue 10000000;
 
 truncate table tb_cal;
 
+delete from tb_cal;
+
+drop Sequence seq_log;
+

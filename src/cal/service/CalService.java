@@ -11,8 +11,7 @@ public class CalService {
 		ics = new CalServiceImpl();
 	}
 	
-	public List<String[]> doService(List list) throws Exception {
+	public void doService(List list) throws Exception {
 		ics.doService(list);
-		return list;
 	}
 }

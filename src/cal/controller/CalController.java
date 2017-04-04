@@ -34,8 +34,8 @@ public class CalController {
 		list.add(emvo);
 
 		try {
-			List<String[]> resultList = cs.doService(list);
-			cv.report(resultList);
+			cs.doService(list);
+			cv.report(list);
 		} catch(AddZeroException e) {
 			cv.errReport(e.getMessage());
 		} catch(SubZeroException e) {
@@ -46,6 +46,7 @@ public class CalController {
 			cv.errReport(e.getMessage());
 		} catch(Exception e) {
 			cv.errReport(e.getMessage());
+			e.printStackTrace();
 		}
 	}
 }

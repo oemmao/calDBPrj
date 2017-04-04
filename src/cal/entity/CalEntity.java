@@ -13,8 +13,8 @@ public class CalEntity {
 		ice = new CalEntityImpl();
 	}
 	
-	public List<String[]> doService(CalVO[] cals) {
-		return ice.doService(cals);
+	public void doService(List list) {
+		ice.doService(list);
 	}
 	
 	public String getMsgAddZeroExc() {

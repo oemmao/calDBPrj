@@ -19,7 +19,7 @@ public class CalServiceImpl implements ICalService {
 		ce = new CalEntity();
 	}
 
-	public List<String[]> doService(List list) throws Exception {
+	public void doService(List list) throws Exception {
 
 		cals = (CalVO[]) list.get(0);
 		emvo = (CalExcMsgVO) list.get(1);
@@ -66,7 +66,7 @@ public class CalServiceImpl implements ICalService {
 			}
 			cals[i].setResult(result);	
 		}
-		return ce.doService(cals);
+		ce.doService(list);
 	}
 
 	public String getMsgAddZeroExc() {

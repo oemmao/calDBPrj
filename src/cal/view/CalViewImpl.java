@@ -25,8 +25,12 @@ public class CalViewImpl implements ICalView {
 			cc.doService(prop);
 	}
 	
-	public void report(List<String[]> resultList) {	
-
+	public void report(List list) {	
+		 List<String[]> result = (List)list.get(2);
+		for(String[] str : result) {
+			System.out.println(Arrays.toString(str));
+		}
+		
 //		for(String[] result : resultList) {
 //			System.out.println(result);
 //		}
