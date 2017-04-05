@@ -26,14 +26,10 @@ public class CalViewImpl implements ICalView {
 	}
 	
 	public void report(List list) {	
-		 List<String[]> result = (List)list.get(2);
+		 List<String[]> result = (List<String[]>)list.get(2); // list.get(2)에 resultList가 담겨있음. //형변환 
 		for(String[] str : result) {
 			System.out.println(Arrays.toString(str));
 		}
-		
-//		for(String[] result : resultList) {
-//			System.out.println(result);
-//		}
 	}
 	
 	public void errReport(String msg) {

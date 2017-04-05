@@ -42,7 +42,7 @@ public class CalEntityImpl implements ICalEntity {
 				stmt.executeUpdate();
 				tableData();	
 			}
-			list.add(resultList);
+			list.add(resultList); //DB에 있는 값이 담겨있는 resultList를 View로 넘겨주기 위해 list에 add함.
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -90,7 +90,7 @@ public class CalEntityImpl implements ICalEntity {
 			ops[3] = op2;
 			ops[4] = result;
 			
-			resultList.add(ops);
+			resultList.add(ops); //DB에 있는 값을 resultList에 add함.
 		
 		} catch (SQLException e) {
 			e.printStackTrace();

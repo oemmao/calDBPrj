@@ -5,3 +5,8 @@ content longtext not null,
 primary key(id)
 ) ENGINE=InnoDB default charset=euckr;
 
+select * from tb_comment;
+
+delete from tb_comment;
+
+drop table tb_comment;

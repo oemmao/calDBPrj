@@ -1,6 +1,0 @@
-#ExceptionMsg
-e1= AddZeroException : Occurrence of an exception
-e2= SubZeroException : Occurrence of an exception
-e3= MulOneException : Occurrence of an exception
-e4= DivOneException : Occurrence of an exception
- 

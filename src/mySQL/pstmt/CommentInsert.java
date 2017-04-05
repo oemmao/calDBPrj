@@ -18,11 +18,11 @@ public class CommentInsert {
 			Connection con = DriverManager.getConnection(url,user,pass); //目池记 裙垫
 			PreparedStatement pstmt = null;
 			try {
-			String query = "insert into (name, contect)" + "values(?,?)";
-			pstmt = con.prepareStatement(query); // statement 按眉 积己 //孽府傈价
+				String query = "insert into tb_comment(name, content)" + "values(?,?)";
+				pstmt = con.prepareStatement(query); // statement 按眉 积己 //孽府傈价
 				pstmt.setString(1, "全辨悼");
 				pstmt.setString(2, "救崇窍技夸");
-				pstmt.executeQuery();
+				pstmt.executeUpdate();
 			} finally {
 				if (pstmt != null) {
 					pstmt.close();

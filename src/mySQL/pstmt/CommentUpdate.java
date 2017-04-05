@@ -16,8 +16,19 @@ public class CommentUpdate {
 		
 		try {
 			Connection con = DriverManager.getConnection(url,user,pass);
-			String query = "Update tb_comment set name='강감찬' ";
-			PreparedStatement psmt = con.prepareStatement(query);
+			PreparedStatement pstmt = null;
+			try {
+				String query = "Update tb_comment set name='강감찬' ";
+				pstmt = con.prepareStatement(query);
+				pstmt.executeUpdate();
+			} finally {
+				if (pstmt != null) {
+					pstmt.close();
+					if (con != null) {
+						con.close();
+					}
+				}
+			}	
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

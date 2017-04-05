@@ -16,16 +16,26 @@ public class CommentSelect {
 		
 		try {
 			Connection con = DriverManager.getConnection(url, user, pass); //目池记 裙垫
-			String query = "select * from tb_comment";
-			PreparedStatement pstmt = con.prepareStatement(query); //Statement 按眉 积己 //孽府 傈价
-			ResultSet rs = pstmt.executeQuery();
-			while(rs.next()) {
-				String id = rs.getString("id").trim();
-				String name = rs.getString("name").trim();
-				String contect = rs.getString("contect").trim();
-				String str = id +" "+ name +" "+ contect;
-				System.out.println(str);
-			}
+			PreparedStatement pstmt = null;
+			try {
+				String query = "select * from tb_comment";
+				pstmt = con.prepareStatement(query); //Statement 按眉 积己 //孽府 傈价
+				ResultSet rs = pstmt.executeQuery();
+				while(rs.next()) {
+					String id = rs.getString("id").trim();
+					String name = rs.getString("name").trim();
+					String contect = rs.getString("contect").trim();
+					String str = id +" "+ name +" "+ contect;
+					System.out.println(str);
+				}	
+			} finally {
+				if (pstmt != null) {
+					pstmt.close();
+					if (con != null) {
+						con.close();
+					}
+				}
+			}	
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

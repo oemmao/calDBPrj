@@ -16,8 +16,19 @@ public class CommentDelete {
 		
 		try {
 			Connection con = DriverManager.getConnection(url,user,pass);
+			PreparedStatement pstmt = null;
+			try {
 			String query = "delete from tb_comment";
-			PreparedStatement psmt = con.prepareStatement(query);
+			pstmt = con.prepareStatement(query);
+			pstmt.executeUpdate();
+			} finally {
+				if (pstmt != null) {
+					pstmt.close();
+					if (con != null) {
+						con.close();
+					}
+				}
+			}	
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
